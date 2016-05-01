@@ -1,0 +1,5 @@
+obj-y += riscv_pcat_board.o
+obj-y += cputimer.o riscv_int.o
+obj-y += pc.o
+obj-y += htif/htif.o
+

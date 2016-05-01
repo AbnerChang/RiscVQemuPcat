@@ -8,3 +8,19 @@ It's hard to sync-up mine with the official one because lot of changes from offi
 8 months. One thing sad is I missed the original revision of official RISC-V QEMU. I will have to spend some time to migrate the
 changes from these two repositories.
 
+Prerequisites:
+$ sudo apt-get install gcc libc6-dev pkg-config bridge-utils uml-utilities zlib1g-dev libglib2.0-dev autoconf automake libtool libsdl1.2-dev
+
+Build:
+$ ./configure --target-list=riscvpcat-softmmu
+$ make
+
+Run QEMU:
+- Change working directory to RiscVQeumPcat/riscvpcat-softmmu/
+- $./qemu-system-riscvpcat -bios YOURBIOSIMAGE -usb -usbdevice keyboard
+
+YOUBIOSIMAGE: Built from EDK2 open source RiscVVirtPkg/RiscVVirt64.dsc package.
+
+
+
+
