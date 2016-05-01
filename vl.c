@@ -2839,7 +2839,9 @@ static const QEMUOption *lookup_opt(int argc, char **argv,
 
     return popt;
 }
-
+//(AC)
+//GMemVTable now galegated in libglib2.0-dev (2.48.0)
+/*
 static gpointer malloc_and_trace(gsize n_bytes)
 {
     void *ptr = malloc(n_bytes);
@@ -2858,7 +2860,7 @@ static void free_and_trace(gpointer mem)
 {
     trace_g_free(mem);
     free(mem);
-}
+}*/
 
 static int object_set_property(const char *name, const char *value, void *opaque)
 {
@@ -2957,19 +2959,23 @@ int main(int argc, char **argv, char **envp)
     bool userconfig = true;
     const char *log_mask = NULL;
     const char *log_file = NULL;
-    GMemVTable mem_trace = {
+
+//(AC)
+//GMemVTable now galegated in libglib2.0-dev (2.48.0)
+/*    GMemVTable mem_trace = {
         .malloc = malloc_and_trace,
         .realloc = realloc_and_trace,
         .free = free_and_trace,
-    };
+    };*/
     const char *trace_events = NULL;
     const char *trace_file = NULL;
 
     atexit(qemu_run_exit_notifiers);
     error_set_progname(argv[0]);
     qemu_init_exec_dir(argv[0]);
-
-    g_mem_set_vtable(&mem_trace);
+//(AC)
+//GMemVTable now galegated in libglib2.0-dev (2.48.0)
+//    g_mem_set_vtable(&mem_trace);
 
     module_call_init(MODULE_INIT_QOM);
 
