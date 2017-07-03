@@ -1536,6 +1536,13 @@ inline static void gen_system(DisasContext *ctx, uint32_t opc,
                 tcg_gen_exit_tb(0); // no chaining
                 ctx->bstate = BS_BRANCH;
                 break;
+
+            case 0x302: // MRET
+                gen_helper_sret(cpu_PC, cpu_env);
+                tcg_gen_exit_tb(0); // no chaining
+                ctx->bstate = BS_BRANCH;
+                break;
+
             default:
                 kill_unknown(ctx, RISCV_EXCP_ILLEGAL_INST);
                 break;
